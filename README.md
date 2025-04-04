@@ -15,11 +15,11 @@ CREATE SCHEMA demo_migration;
 **2. Storage Integration with AWS**
 ```sql
 CREATE OR REPLACE STORAGE INTEGRATION aws_s3_integration
-  TYPE = EXTERNAL_STAGE
-  STORAGE_PROVIDER = 'S3'
-  ENABLED = TRUE
-  STORAGE_AWS_ROLE_ARN = '<Your-Role-ARN>'
-  STORAGE_ALLOWED_LOCATIONS = ('s3://<your-bucket>/');
+TYPE = EXTERNAL_STAGE  --  Specifies that this integration is used for external cloud storage (here AWS S3).
+STORAGE_PROVIDER = 'S3'  -- Specifies Amazon S3 as the storage provider.
+ENABLED = TRUE  -- Enables the integration for immediate use
+STORAGE_AWS_ROLE_ARN = '<Your-Role-ARN>'  -- Specifies the ARN of the IAM role created in AWS. This role allows Snowflake to access the S3 bucket securely.
+STORAGE_ALLOWED_LOCATIONS = ('s3://<your-bucket>/');  -- Restricts Snowflake's access to specific S3 buckets or prefixes, ensuring secure and controlled access.
 ```
 #Ensure that the IAM role and external ID are correctly configured in AWS.
 
