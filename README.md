@@ -10,7 +10,7 @@ CREATE OR REPLACE DATABASE Demo_DB;
 CREATE SCHEMA demo_migration; 
 ```
 **2. Storage Integration with AWS**
-```
+```sql
 CREATE OR REPLACE STORAGE INTEGRATION aws_s3_integration
   TYPE = EXTERNAL_STAGE
   STORAGE_PROVIDER = 'S3'
@@ -21,7 +21,7 @@ CREATE OR REPLACE STORAGE INTEGRATION aws_s3_integration
 # Ensure that the IAM role and external ID are correctly configured in AWS.
 
 **3. Stage & File Format Configuration**
-```
+```sql
 CREATE OR REPLACE FILE FORMAT demo_format
   TYPE = CSV
   FIELD_DELIMITER = ','
@@ -35,7 +35,7 @@ CREATE OR REPLACE STAGE demo_s3_stage
   URL = 's3://<your-bucket>/';
 ```
 **4. Table Creation**
-```
+```sql
 CREATE OR REPLACE TABLE customer_data (
   "CustomerID" INT,
   "Gender" STRING,
@@ -45,10 +45,12 @@ CREATE OR REPLACE TABLE customer_data (
 );
 ```
 **5. Data Loading from S3**
+```sql
 COPY INTO customer_data
 FROM @demo_s3_stage/customers_info.csv
 FILE_FORMAT = (FORMAT_NAME = 'demo_format')
 ON_ERROR = 'CONTINUE';
+```
 #Use FORCE = TRUE to reload the same file and PURGE = TRUE to delete the file post ingestion.
 
 **Notes:**
