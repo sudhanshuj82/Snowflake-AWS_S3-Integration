@@ -1,4 +1,7 @@
 # Snowflake Data Ingestion with AWS S3 Integration
+DATA FLOW DIAGRAM
+![storage-integration-s3](https://github.com/user-attachments/assets/4112772e-ed26-4c5b-a7cc-a7b7b9022141)
+
 
 This project demonstrates how to integrate AWS S3 with Snowflake to enable seamless, secure data loading using external stages and storage integration.
 
@@ -18,7 +21,7 @@ CREATE OR REPLACE STORAGE INTEGRATION aws_s3_integration
   STORAGE_AWS_ROLE_ARN = '<Your-Role-ARN>'
   STORAGE_ALLOWED_LOCATIONS = ('s3://<your-bucket>/');
 ```
-# Ensure that the IAM role and external ID are correctly configured in AWS.
+#Ensure that the IAM role and external ID are correctly configured in AWS.
 
 **3. Stage & File Format Configuration**
 ```sql
