@@ -5,7 +5,7 @@ This project demonstrates how to integrate AWS S3 with Snowflake to enable seaml
 ## 🔧 Setup Overview
 
 **1. Database & Schema Initialization**
-```sql
+--sql
 CREATE OR REPLACE DATABASE Demo_DB;
 CREATE SCHEMA demo_migration;
 
@@ -47,7 +47,7 @@ FILE_FORMAT = (FORMAT_NAME = 'demo_format')
 ON_ERROR = 'CONTINUE';
 #Use FORCE = TRUE to reload the same file and PURGE = TRUE to delete the file post ingestion.
 
-Notes:
+**Notes:**
 The trust policy must reference the external ID provided by Snowflake.
 The S3 bucket policy should explicitly allow access for the role.
 
